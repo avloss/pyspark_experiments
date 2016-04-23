@@ -51,10 +51,8 @@ class advanced_stats(basic_stats):
         zip = self.a.zip(self.b).zipWithIndex()
         denominator = self.length * (self.length - 1) / 2.0
         pairs = zip.cartesian(zip).filter(lambda x: x[0][1] > x[1][1])
-        differences = pairs.map(lambda x: (x[0][0][0] - x[1][0][0]) \
-                                * (x[0][0][1] - x[1][0][1]))
-        numerator = differences.filter(lambda x: x != 0).map(lambda x: \
-                (1 if x > 0 else -1)).sum()
+        differences = pairs.map(lambda x: (x[0][0][0] - x[1][0][0]) * (x[0][0][1] - x[1][0][1]))
+        numerator = differences.filter(lambda x: x != 0).map(lambda x: (1 if x > 0 else -1)).sum()
         return numerator / denominator
 
 
