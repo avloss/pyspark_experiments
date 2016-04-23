@@ -18,7 +18,7 @@ def CDF(a, b, l, x):
     return abs(a_count - b_count) / l
 
 
-class basic_stats(object):
+class BasicStats(object):
 
     def __init__(self, a, b):
         self.a_driver = a
@@ -38,10 +38,10 @@ class basic_stats(object):
         return Statistics.corr(self.a, self.b, 'pearson')
 
 
-class advanced_stats(basic_stats):
+class AdvancedStats(BasicStats):
 
     def __init__(self, a, b):
-        basic_stats.__init__(self, a, b)
+        BasicStats.__init__(self, a, b)
 
     def rho(self):
         return Statistics.corr(self.a, self.b, 'spearman')
@@ -61,7 +61,7 @@ def test_ks():
 
     # make sure my implementation matches non-distributed scipy version
 
-    stats = basic_stats(list1, list2)
+    stats = BasicStats(list1, list2)
     assert stats.ks() == scipy.stats.ks_2samp(list1, list2).statistic
 
 
@@ -72,7 +72,7 @@ def test_tau():
     # make sure my implementation matches non-distributed scipy version
     # there are some issues and it doesn't match on longer sequences
 
-    stats = advanced_stats(list1, list2)
+    stats = AdvancedStats(list1, list2)
     assert abs(stats.tau() - scipy.stats.kendalltau(list1, list2)[0]) < 0.02
 
 
