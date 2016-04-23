@@ -66,8 +66,8 @@ def test_ks():
 
 
 def test_tau():
-    list1 = [0,2,4,4,3,10]
-    list2 = [4,5,0,3,2,1]
+    list1 = [0, 2, 4, 4, 3, 10]
+    list2 = [4, 5, 0, 3, 2, 1]
 
     # make sure my implementation matches non-distributed scipy version
     # there are some issues and it doesn't match on longer sequences
