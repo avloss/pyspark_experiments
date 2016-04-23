@@ -32,8 +32,7 @@ class basic_stats(object):
         a_br = sc.broadcast(self.a_driver)
         b_br = sc.broadcast(self.b_driver)
         length = self.length
-        return self.a.union(self.b).distinct().map(lambda x: CDF(a_br,
-                b_br, length, x)).max()
+        return self.a.union(self.b).distinct().map(lambda x: CDF(a_br, b_br, length, x)).max()
 
     def pearson(self):
         return Statistics.corr(self.a, self.b, 'pearson')
